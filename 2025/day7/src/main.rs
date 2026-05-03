@@ -9,12 +9,20 @@ enum Value {
     Start,
 }
 
+struct Node<'a>{
+    position : (u32, u32),
+    parent : Option<&'a Node<'a>>,
+    first_child : Option<&'a Node<'a>>,
+    second_child : Option<&'a Node<'a>>,
+    depth : u32,
+}
+
 fn parseInput () -> Vec<Vec<Value>> {
 
     let input = fs::read_to_string("input")
         .unwrap_or("!".to_string());
     
-   /* let input = ".......S.......
+    let input = ".......S.......
 ...............
 .......^.......
 ...............
@@ -29,7 +37,7 @@ fn parseInput () -> Vec<Vec<Value>> {
 ..^...^.....^..
 ...............
 .^.^.^.^.^...^.
-...............";*/
+...............";
 
     let mut output = vec![];
     for line in input.lines() {

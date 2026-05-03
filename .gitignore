@@ -1,1 +1,6 @@
-*/target
+# Rust build artefacts
+target/
+
+# C build artefacts
+*.o
+*.out
